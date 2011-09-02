@@ -60,6 +60,11 @@ namespace :test do
 		n.assemblies FileList["tests/**/bin/debug/**/*.Tests.dll"]
 	end
 	
+	desc 'Run unit tests'
+	nunit :unit => [:default] do |n|
+		n.command = nunit_cmd
+		n.assemblies FileList["tests/**/bin/debug/**/*Unit.Tests.dll"]
+	end
 end
 
 namespace :version do

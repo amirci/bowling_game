@@ -64,12 +64,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrameHelper.cs" />
     <Compile Include="ISpecificationWithContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BowlingGameSpecification.cs" />
     <Compile Include="FrameKeeperSpecification.cs" />
+    <Compile Include="RandomPins.cs" />
     <Compile Include="SpecificationBaseWithNoContract.cs" />
     <Compile Include="When_frame_keeper_registers_first_ball.cs">
+      <DependentUpon>FrameKeeperSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_frame_keeper_registers_second_ball.cs">
       <DependentUpon>FrameKeeperSpecification.cs</DependentUpon>
     </Compile>
     <Compile Include="When_game_rolls_pins.cs">

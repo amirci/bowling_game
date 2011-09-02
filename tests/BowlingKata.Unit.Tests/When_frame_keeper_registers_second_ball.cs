@@ -1,15 +1,15 @@
-using System;
 using System.Linq;
 using NUnit.Framework;
 using SharpTestsEx;
 
 namespace BowlingKata.Unit.Tests
 {
-    public class When_frame_keeper_registers_first_ball : FrameKeeperSpecification
+    public class When_frame_keeper_registers_second_ball : FrameKeeperSpecification
     {
         public override void When()
         {
-            this.Sut.Keep(this.RandomFrame.Item1);
+            this.Sut.Keep(FirstBall);
+            this.Sut.Keep(SecondBall);
         }
 
         [Test]
@@ -20,7 +20,7 @@ namespace BowlingKata.Unit.Tests
                 .Should()
                 .Have.SameSequenceAs(new[]
                                          {
-                                             Tuple.Create(this.RandomFrame.Item1, 0)
+                                             this.RandomFrame
                                          });
         }
     }
