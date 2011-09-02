@@ -73,7 +73,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BowlingKata\BowlingKata.csproj">
+    <ProjectReference Include="..\..\main\BowlingKata\BowlingKata.csproj">
       <Project>{6A6EDDB4-D418-41D2-AFF0-9AB513920089}</Project>
       <Name>BowlingKata</Name>
     </ProjectReference>

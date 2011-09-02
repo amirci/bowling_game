@@ -16,7 +16,7 @@
 
         public void Roll(int pins)
         {
-            
+            this._frameKeeper.Keep(pins);
         }
     }
 }
