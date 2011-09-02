@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BowlingFrame.cs" />
     <Compile Include="BowlingGame.cs" />
+    <Compile Include="FrameKeeper.cs" />
+    <Compile Include="IBowlingFrame.cs" />
     <Compile Include="IFrameKeeper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
