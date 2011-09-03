@@ -45,6 +45,7 @@
     <Compile Include="FrameKeeper.cs" />
     <Compile Include="IBowlingFrame.cs" />
     <Compile Include="IFrameKeeper.cs" />
+    <Compile Include="IScoreCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

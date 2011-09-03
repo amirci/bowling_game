@@ -9,11 +9,15 @@ namespace BowlingKata.Unit.Tests
         : SpecificationBaseWithNoContract<BowlingGame>
     {
         [Fake]
-        public IFrameKeeper FrameKeeper { get; set; }
+        protected IFrameKeeper FrameKeeper { get; set; }
+
+        [Fake]
+        protected IScoreCalculator ScoreCalculator { get; set; }
 
         protected override BowlingGame CreateSut()
         {
-            return new BowlingGame(this.FrameKeeper);
+            return new BowlingGame(this.FrameKeeper, this.ScoreCalculator);
         }
+
     }
 }
