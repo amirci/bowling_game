@@ -22,11 +22,16 @@ namespace BowlingKata
 
         private void FirstBall(int pins)
         {
+            if (this._frames.Count == 10 && !this._frames.Last().IsStrike)
+            {
+                throw new InvalidBowlingBallException();
+            }
+
             var frame = new BowlingFrame(pins);
 
             this._frames.Add(frame);
 
-            if (!frame.IsStrike)
+            if (!frame.IsStrike || this._frames.Count == 11)
             {
                 this._action = SecondBall;
             }
