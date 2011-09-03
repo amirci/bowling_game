@@ -5,19 +5,18 @@ namespace BowlingKata.Unit.Tests
 {
     public class When_game_rolls_pins : BowlingGameSpecification
     {
+        public override void When()
+        {
+            this.Sut.Roll(5);
+        }
+        
         [Test]
         public void Should_register_the_pins_down()
         {
-            // arrange
-            var scoreKeeper = A.Fake<IFrameKeeper>();
-
-            // act
-            var game = new BowlingGame(scoreKeeper);
-
-            game.Roll(5);
+            this.Sut.Roll(5);
 
             // assert
-            A.CallTo(() => scoreKeeper.Keep(5)).MustHaveHappened();
+            A.CallTo(() => this.FrameKeeper.Keep(5)).MustHaveHappened();
         }
     }
 }

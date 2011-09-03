@@ -7,7 +7,7 @@ namespace BowlingKata.Unit.Tests
     /// Base specification for FrameKeeper
     /// </summary>
     public abstract class FrameKeeperSpecification
-        : SpecificationBaseWithNoContract<IFrameKeeper, FrameKeeper>
+        : SpecificationBaseWithContract<IFrameKeeper, FrameKeeper>
     {
         protected const int AllPins = 10;
         protected Tuple<int, int> RandomFrame;
