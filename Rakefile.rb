@@ -65,6 +65,7 @@ namespace :test do
 		n.command = nunit_cmd
 		n.assemblies FileList["tests/**/bin/debug/**/*Unit.Tests.dll"]
 	end
+	
 end
 
 namespace :version do

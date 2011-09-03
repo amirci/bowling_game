@@ -11,5 +11,10 @@ namespace BowlingKata
         public int First { get; private set; }
 
         public int Second { get; private set; }
+
+        public bool IsStrike
+        {
+            get { return this.First == 10; }
+        }
     }
 }

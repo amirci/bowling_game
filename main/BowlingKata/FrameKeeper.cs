@@ -22,9 +22,14 @@ namespace BowlingKata
 
         private void FirstBall(int pins)
         {
-            this._frames.Add(new BowlingFrame(pins));
+            var frame = new BowlingFrame(pins);
 
-            this._action = SecondBall;
+            this._frames.Add(frame);
+
+            if (!frame.IsStrike)
+            {
+                this._action = SecondBall;
+            }
         }
 
         private void SecondBall(int pins)

@@ -9,6 +9,7 @@ namespace BowlingKata.Unit.Tests
     public abstract class FrameKeeperSpecification
         : SpecificationBaseWithNoContract<IFrameKeeper, FrameKeeper>
     {
+        protected const int AllPins = 10;
         protected Tuple<int, int> RandomFrame;
 
         protected int SecondBall
@@ -25,7 +26,7 @@ namespace BowlingKata.Unit.Tests
         {
             base.Given();
 
-            this.RandomFrame = new RandomPins().RandomLameFrame();
+            this.RandomFrame = new RandomPins().LameFrame();
         }
 
         protected override IFrameKeeper CreateSut()
