@@ -25,8 +25,9 @@ namespace BowlingKata.Acceptance.Tests
 
         public GameBuilder WithPerfectGame()
         {
-            10.Times(() => this._game.Roll(10));
+            12.Times(() => this._game.Roll(10));
 
+            
             return this;
         }
     }
