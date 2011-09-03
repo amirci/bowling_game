@@ -5,7 +5,7 @@ using SharpTestsEx;
 
 namespace BowlingKata.Unit.Tests
 {
-    public class When_score_calculates : ScoreCalculatorSpecification
+    public class When_score_calculator_calculates_all_strikes : ScoreCalculatorSpecification
     {
         private int _expected;
 
@@ -17,7 +17,16 @@ namespace BowlingKata.Unit.Tests
                                     {
                                         A.CallTo(() => f.IsStrike).Returns(true);
                                         A.CallTo(() => f.Score).Returns(10);
+                                        A.CallTo(() => f.First).Returns(10);
                                     });
+
+            var additionalFrame = A.Fake<IBowlingFrame>();
+
+            this.Frames = this.Frames.Concat(additionalFrame);
+
+            A.CallTo(() => additionalFrame.Score).Returns(20);
+            A.CallTo(() => additionalFrame.First).Returns(10);
+            A.CallTo(() => additionalFrame.Second).Returns(10);
         }
 
         public override void When()

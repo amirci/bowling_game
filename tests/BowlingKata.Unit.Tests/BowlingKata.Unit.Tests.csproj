@@ -85,7 +85,9 @@
     <Compile Include="When_game_rolls_pins.cs">
       <DependentUpon>BowlingGameSpecification.cs</DependentUpon>
     </Compile>
-    <Compile Include="When_score_calculates.cs" />
+    <Compile Include="When_score_calculator_calculates_all_strikes.cs">
+      <DependentUpon>ScoreCalculatorSpecification.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
