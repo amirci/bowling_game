@@ -8,7 +8,7 @@ namespace BowlingKata.Acceptance.Tests
 
         public GameBuilder()
         {
-            _game = new BowlingGame(null);
+            _game = new BowlingGame(new FrameKeeper());
         }
 
         public BowlingGame Build()
