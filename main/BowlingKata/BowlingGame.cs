@@ -13,7 +13,7 @@
 
         public int Score()
         {
-            return 0;
+            return this._calculator.Calculate(this._frameKeeper.Frames);
         }
 
         public void Roll(int pins)
