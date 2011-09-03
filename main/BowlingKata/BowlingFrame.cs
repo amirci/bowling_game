@@ -16,5 +16,10 @@ namespace BowlingKata
         {
             get { return this.First == 10; }
         }
+
+        public int Score
+        {
+            get { return this.First + this.Second; }
+        }
     }
 }

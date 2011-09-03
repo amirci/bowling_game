@@ -70,6 +70,7 @@
     <Compile Include="BowlingGameSpecification.cs" />
     <Compile Include="FrameKeeperSpecification.cs" />
     <Compile Include="RandomPins.cs" />
+    <Compile Include="ScoreCalculatorSpecification.cs" />
     <Compile Include="SpecificationBaseWithContract.cs" />
     <Compile Include="SpecificationBaseWithNoContract.cs" />
     <Compile Include="When_frame_keeper_registers_first_ball.cs">
@@ -84,6 +85,7 @@
     <Compile Include="When_game_rolls_pins.cs">
       <DependentUpon>BowlingGameSpecification.cs</DependentUpon>
     </Compile>
+    <Compile Include="When_score_calculates.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -6,12 +6,4 @@ namespace BowlingKata
     {
         int Calculate(IEnumerable<IBowlingFrame> frames);
     }
-
-    public class ScoreCalculator : IScoreCalculator
-    {
-        public int Calculate(IEnumerable<IBowlingFrame> frames)
-        {
-            return 0;
-        }
-    }
 }
