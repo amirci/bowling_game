@@ -19,5 +19,5 @@ namespace BowlingKata.Acceptance.Tests
             // assert
             game.Score().Should().Be(300);
         }
-    }
+    }    
 }

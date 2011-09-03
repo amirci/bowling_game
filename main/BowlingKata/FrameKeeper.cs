@@ -8,32 +8,34 @@ namespace BowlingKata
     {
         private readonly ICollection<IBowlingFrame> _frames = new List<IBowlingFrame>();
 
-        private Action<int> _action;
+        private Action<int> _nextAction;
 
         public FrameKeeper()
         {
-            _action = FirstBall;
+            _nextAction = FirstBall;
+        }
+
+        public IEnumerable<IBowlingFrame> Frames
+        {
+            get { return this._frames; }
         }
 
         public void Keep(int pins)
         {
-            _action(pins);
+            _nextAction(pins);
         }
 
         private void FirstBall(int pins)
         {
-            if (this._frames.Count == 10 && !this._frames.Last().IsStrike)
-            {
-                throw new InvalidBowlingBallException();
-            }
+            EnsureValidGame();
 
             var frame = new BowlingFrame(pins);
 
             this._frames.Add(frame);
 
-            if (!frame.IsStrike || this._frames.Count == 11)
+            if (ShouldWaitForASecondBall(frame))
             {
-                this._action = SecondBall;
+                this._nextAction = SecondBall;
             }
         }
 
@@ -45,12 +47,20 @@ namespace BowlingKata
 
             this._frames.Add(new BowlingFrame(last.First, pins));
 
-            this._action = FirstBall;
+            this._nextAction = FirstBall;
         }
 
-        public IEnumerable<IBowlingFrame> Frames
+        private bool ShouldWaitForASecondBall(IBowlingFrame frame)
         {
-            get { return this._frames; }
+            return !frame.IsStrike || this._frames.Count == 11;
+        }
+
+        private void EnsureValidGame()
+        {
+            if (this._frames.Count == 10 && !this._frames.Last().IsStrike)
+            {
+                throw new InvalidBowlingBallException();
+            }
         }
     }
 }
