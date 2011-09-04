@@ -5,50 +5,53 @@ namespace BowlingKata
 {
     public class ScoreCalculator : IScoreCalculator
     {
+        private static readonly IBowlingFrame _emptyFrame = new BowlingFrame(0);
+
         public int Calculate(IEnumerable<IBowlingFrame> frames)
         {
             var firstTen = frames.Take(10);
 
-            var plainSum = firstTen.Select(f => f.Score).Sum();
-
             var copy = firstTen.ToList();
 
-            var strikeSum = firstTen.Where(f => f.IsStrike).Select(f => NextTwoBalls(f, copy)).Sum();
+            var extra = frames.Skip(10).FirstOrDefault();
 
-            var extraSum = CalculateExtraFrame(frames.Skip(10).FirstOrDefault());
+            return firstTen.Aggregate(0, (score, f) =>
+                                             {
+                                                 score += f.Score;
 
-            return plainSum + strikeSum + extraSum;
+                                                 score += f.IsSpare.Then(NextBall(f, copy));
+
+                                                 score += f.IsStrike.Then(NextTwoBalls(f, copy));
+
+                                                 return score;
+                                             }) +
+                   ExtraFrame(extra);
         }
 
-        private int CalculateExtraFrame(IBowlingFrame extra)
+        private static int NextBall(IBowlingFrame frame, IList<IBowlingFrame> frames)
+        {
+            return NextFrame(frame, frames).First;
+        }
+
+        private static int ExtraFrame(IBowlingFrame extra)
         {
             return extra == null ? 0 : extra.First * 2 + extra.Second;
         }
 
-        private static int NextTwoBalls(IBowlingFrame bowlingFrame, IList<IBowlingFrame> frames)
+        private static int NextTwoBalls(IBowlingFrame frame, IList<IBowlingFrame> frames)
         {
-            var index = frames.IndexOf(bowlingFrame);
+            var nextFrame = NextFrame(frame, frames);
 
-            if (index == frames.Count - 1)
-            {
-                return 0;
-            }
+            var secondFrame = NextFrame(nextFrame, frames);
 
-            return frames[index + 1].First + TheSecondBall(frames, index);
+            return nextFrame.First + (nextFrame.IsStrike ? secondFrame.First : nextFrame.Second);
         }
 
-        private static int TheSecondBall(IList<IBowlingFrame> frames, int index)
+        private static IBowlingFrame NextFrame(IBowlingFrame frame, IList<IBowlingFrame> frames)
         {
-            var f1 = frames[index + 1];
+            var index = frames.IndexOf(frame);
 
-            if (!f1.IsStrike || index == frames.Count - 2)
-            {
-                return f1.Second;
-            }
-
-            var f2 = frames[index + 2];
-
-            return f2.First;
+            return index == -1 || index == frames.Count - 1 ? _emptyFrame : frames[index + 1];
         }
     }
 }

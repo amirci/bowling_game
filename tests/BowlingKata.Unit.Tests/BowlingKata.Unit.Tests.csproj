@@ -73,6 +73,7 @@
     <Compile Include="ScoreCalculatorSpecification.cs" />
     <Compile Include="SpecificationBaseWithContract.cs" />
     <Compile Include="SpecificationBaseWithNoContract.cs" />
+    <Compile Include="When_frame_keeper_registers_an_invalid_ball_for_a_spare.cs" />
     <Compile Include="When_frame_keeper_registers_an_invalid_frame.cs">
       <DependentUpon>FrameKeeperSpecification.cs</DependentUpon>
     </Compile>
@@ -92,6 +93,9 @@
       <DependentUpon>BowlingGameSpecification.cs</DependentUpon>
     </Compile>
     <Compile Include="When_score_calculator_calculates_all_strikes.cs">
+      <DependentUpon>ScoreCalculatorSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_score_calculator_calculates_with_spares.cs">
       <DependentUpon>ScoreCalculatorSpecification.cs</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -85,5 +85,12 @@ namespace BowlingKata.Acceptance.Tests
 
             return this;
         }
+
+        public GameBuilder AddFrames(int first, int second, int times)
+        {
+            times.Times(() => AddFrame(first, second));
+
+            return this;
+        }
     }
 }

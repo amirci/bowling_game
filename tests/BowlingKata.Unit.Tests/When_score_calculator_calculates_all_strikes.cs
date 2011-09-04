@@ -7,7 +7,7 @@ namespace BowlingKata.Unit.Tests
 {
     public class When_score_calculator_calculates_all_strikes : ScoreCalculatorSpecification
     {
-        private int _expected;
+        private int _actual;
 
         public override void Given()
         {
@@ -31,13 +31,13 @@ namespace BowlingKata.Unit.Tests
 
         public override void When()
         {
-            this._expected = this.Sut.Calculate(this.Frames);
+            this._actual = this.Sut.Calculate(this.Frames);
         }
 
         [Test]
         public void Should_get_maximum_score()
         {
-            this._expected.Should().Be(300);
+            this._actual.Should().Be(300);
         }
     }
 }

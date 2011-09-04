@@ -16,7 +16,7 @@ namespace BowlingKata.Acceptance.Tests
                 .AddFrame(4, 5)
                 .AddFrame(4, 5)
                 .AddFrame(4, 5)
-                .AddFrame(4, 5)
+                .AddSpare(3)
                 .AddFrame(4, 5)
                 .AddFrame(4, 5)
                 .AddSpare(5)
@@ -24,7 +24,7 @@ namespace BowlingKata.Acceptance.Tests
                 .Build();
 
             // assert
-            game.Score().Should().Be(9 * 9 + 10 * 2);
+            game.Score().Should().Be(8 * 9 + 10 * 2 + 4 + 5 + 5);
         }
     }
 }

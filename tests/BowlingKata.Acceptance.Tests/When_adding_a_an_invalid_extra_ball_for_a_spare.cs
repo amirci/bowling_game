@@ -1,5 +1,4 @@
 using System;
-using MavenThought.Commons.Extensions;
 using NUnit.Framework;
 using SharpTestsEx;
 
@@ -11,13 +10,11 @@ namespace BowlingKata.Acceptance.Tests
         public void Should_throw_an_exception()
         {
             // arrange
-            9.Times(() => this.GameBuilder.AddFrame(5, 4));
-
-            this.GameBuilder.AddSpare(5);
-            
-            var game = this.GameBuilder.Build();
-
-            game.Roll(8);
+            var game = this.GameBuilder
+                .AddFrames(first: 5, second: 4, times: 9)
+                .AddSpare(5)
+                .AddBall(3)
+                .Build();
 
             // act & assert
             new Action(() => game.Roll(8)).Should().Throw();

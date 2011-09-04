@@ -8,6 +8,8 @@ namespace BowlingKata
     {
         private readonly ICollection<IBowlingFrame> _frames = new List<IBowlingFrame>();
 
+        private readonly IBowlingFrame _empty = new BowlingFrame(0);
+
         private Action<int> _nextAction;
 
         public FrameKeeper()
@@ -20,6 +22,22 @@ namespace BowlingKata
             get { return this._frames; }
         }
 
+
+        private bool LastWasSpare
+        {
+            get { return this._frames.DefaultIfEmpty(_empty).Last().IsSpare; }
+        }
+
+        private bool LastWasStrike
+        {
+            get { return this._frames.DefaultIfEmpty(_empty).Last().IsStrike; }
+        }
+        
+        private bool GameComplete
+        {
+            get { return this._frames.Count == 10; }
+        }
+        
         public void Keep(int pins)
         {
             _nextAction(pins);
@@ -27,7 +45,7 @@ namespace BowlingKata
 
         private void FirstBall(int pins)
         {
-            EnsureValidGame();
+            (!GameComplete || LastWasStrike || LastWasSpare).OrThrow<InvalidBowlingBallException>();
 
             var frame = new BowlingFrame(pins);
 
@@ -41,6 +59,8 @@ namespace BowlingKata
 
         private void SecondBall(int pins)
         {
+            (this._frames.Count < 11 || LastWasStrike).OrThrow<InvalidBowlingBallException>();
+
             var last = this._frames.Last();
 
             this._frames.Remove(last);
@@ -53,24 +73,6 @@ namespace BowlingKata
         private bool ShouldWaitForASecondBall(IBowlingFrame frame)
         {
             return !frame.IsStrike || this._frames.Count == 11;
-        }
-
-        private void EnsureValidGame()
-        {
-            var count = this._frames.Count;
-
-            if (count < 10)
-            {
-                return;
-            }
-
-            var lastWasStrike = this._frames.Last().IsStrike;
-            var lastWasSpare = this._frames.Last().IsSpare;
-
-            if (count == 10 && !lastWasStrike && !lastWasSpare)
-            {
-                throw new InvalidBowlingBallException();
-            }
         }
     }
 }
