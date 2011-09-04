@@ -9,5 +9,7 @@ namespace BowlingKata
         bool IsStrike { get; }
 
         int Score { get; }
+
+        bool IsSpare { get; }
     }
 }

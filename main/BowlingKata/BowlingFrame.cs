@@ -21,5 +21,10 @@ namespace BowlingKata
         {
             get { return this.First + this.Second; }
         }
+
+        public bool IsSpare
+        {
+            get { return this.First < 10 && this.Score == 10; }
+        }
     }
 }

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameBuilder.cs" />
+    <Compile Include="When_game_has_spares.cs" />
     <Compile Include="When_is_a_perfect_game.cs" />
     <Compile Include="When_no_pins_are_hit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -57,7 +57,17 @@ namespace BowlingKata
 
         private void EnsureValidGame()
         {
-            if (this._frames.Count == 10 && !this._frames.Last().IsStrike)
+            var count = this._frames.Count;
+
+            if (count < 10)
+            {
+                return;
+            }
+
+            var lastWasStrike = this._frames.Last().IsStrike;
+            var lastWasSpare = this._frames.Last().IsSpare;
+
+            if (count == 10 && !lastWasStrike && !lastWasSpare)
             {
                 throw new InvalidBowlingBallException();
             }
