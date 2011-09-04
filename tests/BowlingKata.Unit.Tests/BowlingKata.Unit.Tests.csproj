@@ -73,7 +73,9 @@
     <Compile Include="ScoreCalculatorSpecification.cs" />
     <Compile Include="SpecificationBaseWithContract.cs" />
     <Compile Include="SpecificationBaseWithNoContract.cs" />
-    <Compile Include="When_frame_keeper_registers_an_invalid_ball_for_a_spare.cs" />
+    <Compile Include="When_frame_keeper_registers_an_invalid_ball_for_a_spare.cs">
+      <DependentUpon>FrameKeeperSpecification.cs</DependentUpon>
+    </Compile>
     <Compile Include="When_frame_keeper_registers_an_invalid_frame.cs">
       <DependentUpon>FrameKeeperSpecification.cs</DependentUpon>
     </Compile>
@@ -96,6 +98,12 @@
       <DependentUpon>ScoreCalculatorSpecification.cs</DependentUpon>
     </Compile>
     <Compile Include="When_score_calculator_calculates_with_spares.cs">
+      <DependentUpon>ScoreCalculatorSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_score_calculator_has_spare_at_the_end.cs">
+      <DependentUpon>ScoreCalculatorSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_score_calculator_has_strike_at_the_end.cs">
       <DependentUpon>ScoreCalculatorSpecification.cs</DependentUpon>
     </Compile>
   </ItemGroup>

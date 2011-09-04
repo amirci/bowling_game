@@ -30,7 +30,7 @@ namespace BowlingKata
 
         private bool LastWasStrike
         {
-            get { return this._frames.DefaultIfEmpty(_empty).Last().IsStrike; }
+            get { return this._frames.DefaultIfEmpty(_empty).Take(10).Last().IsStrike; }
         }
         
         private bool GameComplete

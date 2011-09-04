@@ -92,5 +92,12 @@ namespace BowlingKata.Acceptance.Tests
 
             return this;
         }
+
+        public GameBuilder WithFrames(IEnumerable<int> frames)
+        {
+            frames.ForEach(RollBall);
+
+            return this;
+        }
     }
 }

@@ -82,6 +82,7 @@
       <DependentUpon>GameSpecification.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="When_using_some_random_games.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

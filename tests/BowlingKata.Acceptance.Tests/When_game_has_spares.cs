@@ -24,7 +24,7 @@ namespace BowlingKata.Acceptance.Tests
                 .Build();
 
             // assert
-            game.Score().Should().Be(8 * 9 + 10 * 2 + 4 + 5 + 5);
+            game.Score().Should().Be(8 * 9 + 10 * 2 + 4 + 5);
         }
     }
 }

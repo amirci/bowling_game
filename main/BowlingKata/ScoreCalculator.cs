@@ -5,15 +5,13 @@ namespace BowlingKata
 {
     public class ScoreCalculator : IScoreCalculator
     {
-        private static readonly IBowlingFrame _emptyFrame = new BowlingFrame(0);
+        private static readonly IBowlingFrame _empty = new BowlingFrame(0);
 
         public int Calculate(IEnumerable<IBowlingFrame> frames)
         {
             var firstTen = frames.Take(10);
 
-            var copy = firstTen.ToList();
-
-            var extra = frames.Skip(10).FirstOrDefault();
+            var copy = frames.ToList();
 
             return firstTen.Aggregate(0, (score, f) =>
                                              {
@@ -24,8 +22,7 @@ namespace BowlingKata
                                                  score += f.IsStrike.Then(NextTwoBalls(f, copy));
 
                                                  return score;
-                                             }) +
-                   ExtraFrame(extra);
+                                             }) ;
         }
 
         private static int NextBall(IBowlingFrame frame, IList<IBowlingFrame> frames)
@@ -33,16 +30,13 @@ namespace BowlingKata
             return NextFrame(frame, frames).First;
         }
 
-        private static int ExtraFrame(IBowlingFrame extra)
-        {
-            return extra == null ? 0 : extra.First * 2 + extra.Second;
-        }
-
         private static int NextTwoBalls(IBowlingFrame frame, IList<IBowlingFrame> frames)
         {
+            var extra = frames.Count == 11;
+
             var nextFrame = NextFrame(frame, frames);
 
-            var secondFrame = NextFrame(nextFrame, frames);
+            var secondFrame = extra ? nextFrame : NextFrame(nextFrame, frames);
 
             return nextFrame.First + (nextFrame.IsStrike ? secondFrame.First : nextFrame.Second);
         }
@@ -51,7 +45,7 @@ namespace BowlingKata
         {
             var index = frames.IndexOf(frame);
 
-            return index == -1 || index == frames.Count - 1 ? _emptyFrame : frames[index + 1];
+            return index == -1 || index == frames.Count - 1 ? _empty : frames[index + 1];
         }
     }
 }
