@@ -65,9 +65,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameBuilder.cs" />
-    <Compile Include="When_game_has_spares.cs" />
-    <Compile Include="When_is_a_perfect_game.cs" />
-    <Compile Include="When_no_pins_are_hit.cs" />
+    <Compile Include="GameSpecification.cs" />
+    <Compile Include="When_adding_a_an_invalid_extra_ball_for_a_spare.cs">
+      <DependentUpon>GameSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_adding_a_an_invalid_extra_frame.cs">
+      <DependentUpon>GameSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_game_has_spares.cs">
+      <DependentUpon>GameSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_is_a_perfect_game.cs">
+      <DependentUpon>GameSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_no_pins_are_hit.cs">
+      <DependentUpon>GameSpecification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

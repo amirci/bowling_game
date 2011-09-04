@@ -3,16 +3,13 @@ using SharpTestsEx;
 
 namespace BowlingKata.Acceptance.Tests
 {
-    public class When_game_has_spares
+    public class When_game_has_spares : GameSpecification
     {
         [Test]
         public void Should_add_the_first_balls_for_spares()
         {
-            // arrange
-            var gameBuilder = new GameBuilder();
-
             // act
-            var game = gameBuilder
+            var game = this.GameBuilder
                 .AddFrame(4, 5)
                 .AddFrame(4, 5)
                 .AddFrame(4, 5)

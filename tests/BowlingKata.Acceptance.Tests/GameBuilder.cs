@@ -19,30 +19,6 @@ namespace BowlingKata.Acceptance.Tests
             _frames = new List<int>();
         }
 
-        public int ExpectedScore
-        {
-            get
-            {
-                var expected = 0;
-
-                for (var i = 0; i < _frames.Count; i += 2)
-                {
-                    var first = _frames[i];
-
-                    var second = _frames[i + 1];
-
-                    expected += first + second;
-
-                    if (first == 10 && i < 20)
-                    {
-                        expected += _frames[i + 2] + _frames[i + 3];
-                    }
-                }
-
-                return expected;
-            }
-        }
-
         public BowlingGame Build()
         {
             return this._game;

@@ -3,16 +3,13 @@ using SharpTestsEx;
 
 namespace BowlingKata.Acceptance.Tests
 {
-    public class When_is_a_perfect_game
+    public class When_is_a_perfect_game : GameSpecification
     {
         [Test]
         public void Should_have_score_300()
         {
-            // arrange
-            var gameBuilder = new GameBuilder();
-
             // act
-            var game = gameBuilder
+            var game = this.GameBuilder
                 .WithPerfectGame()
                 .Build();
 

@@ -3,16 +3,13 @@ using SharpTestsEx;
 
 namespace BowlingKata.Acceptance.Tests
 {
-    public class When_no_pins_are_hit
+    public class When_no_pins_are_hit : GameSpecification
     {
         [Test]
         public void Should_have_score_zero()
         {
-            // arrange
-            var gameBuilder = new GameBuilder();
-
             // act
-            var game = gameBuilder
+            var game = this.GameBuilder
                 .WithZeroScore()
                 .Build();
 
