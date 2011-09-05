@@ -4,8 +4,6 @@ namespace BowlingKata.Unit.Tests
     {
         TContract Sut { get; }
 
-        TConcrete ConcreteSut { get; }
-
         void Given();
 
         void When();

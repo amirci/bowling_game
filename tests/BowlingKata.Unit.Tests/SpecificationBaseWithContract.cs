@@ -10,11 +10,6 @@ namespace BowlingKata.Unit.Tests
 
         public TContract Sut { get; private set; }
 
-        public TConcrete ConcreteSut
-        {
-            get { return (TConcrete) this.Sut; }
-        }
-
         public virtual void Given()
         {
         }
