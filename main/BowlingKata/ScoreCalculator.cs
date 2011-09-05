@@ -32,11 +32,9 @@ namespace BowlingKata
 
         private static int NextTwoBalls(IBowlingFrame frame, IList<IBowlingFrame> frames)
         {
-            var extra = frames.Count == 11;
-
             var nextFrame = NextFrame(frame, frames);
 
-            var secondFrame = extra ? nextFrame : NextFrame(nextFrame, frames);
+            var secondFrame = NextFrame(nextFrame, frames);
 
             return nextFrame.First + (nextFrame.IsStrike ? secondFrame.First : nextFrame.Second);
         }
@@ -45,7 +43,11 @@ namespace BowlingKata
         {
             var index = frames.IndexOf(frame);
 
-            return index == -1 || index == frames.Count - 1 ? _empty : frames[index + 1];
+            return index == 10
+                       ? frame
+                       : index == -1 || index == frames.Count - 1
+                             ? _empty
+                             : frames[index + 1];
         }
     }
 }
