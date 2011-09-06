@@ -13,8 +13,6 @@ namespace BowlingKata.Unit.Tests
         [Test]
         public void Should_register_the_pins_down()
         {
-            this.Sut.Roll(5);
-
             // assert
             A.CallTo(() => this.FrameKeeper.Keep(5)).MustHaveHappened();
         }
