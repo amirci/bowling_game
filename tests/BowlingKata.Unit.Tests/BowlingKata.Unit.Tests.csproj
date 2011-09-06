@@ -91,6 +91,9 @@
     <Compile Include="When_frame_keeper_registers_strike_on_last_frame.cs">
       <DependentUpon>FrameKeeperSpecification.cs</DependentUpon>
     </Compile>
+    <Compile Include="When_game_calculates_score.cs">
+      <DependentUpon>BowlingGameSpecification.cs</DependentUpon>
+    </Compile>
     <Compile Include="When_game_rolls_pins.cs">
       <DependentUpon>BowlingGameSpecification.cs</DependentUpon>
     </Compile>
